@@ -1,5 +1,28 @@
-1: const close=document.querySelector(".close"); 2: const
-open=document.querySelector(".ham"); 3: const
-menu=document.querySelector(".menu") 4: close.addEventListener("click",()=>{ 5:
-menu.style.visibility="hidden"; 6: }) 7: open.addEventListener("click",()=>{ 8:
-menu.style.visibility="visible"; 9: })
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); 
+    var m = date.getMinutes(); 
+    var s = date.getSeconds(); 
+    var session = "AM";
+    
+    if(h == 0){
+        h = 12;
+    }
+    
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+    
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+    
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("clock").innerText = time;
+    document.getElementById("clock").textContent = time;
+    
+    setTimeout(showTime, 1000);
+}
+
+showTime();
